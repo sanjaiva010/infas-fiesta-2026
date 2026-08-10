@@ -55,7 +55,6 @@
   }
 
   var prev = { d: -1, h: -1, m: -1, s: -1 };
-  var vanished = { d: false, h: false, m: false, s: false };
   var eventReached = false;
 
   function fmt(n) { return n < 10 ? '0' + n : String(n); }
@@ -72,44 +71,24 @@
     };
 
     Object.keys(vals).forEach(function (u) {
-      if (vanished[u]) return;
       var v = vals[u];
       if (cells[u].textContent !== fmt(v)) {
         cells[u].textContent = fmt(v);
-        tearUnit(units[u]);                       // ONE sticky torn off this tick
-        if (v === 0 && prev[u] > 0) vanishUnit(u); // whole stack rips away at 0
+        tearUnit(units[u]);          // one sticky torn off this tick
         prev[u] = v;
       } else if (prev[u] === -1) {
-        prev[u] = v;                              // first paint
+        prev[u] = v;                 // first paint
       }
     });
 
-    // milestone stickies peel away as the days reduce
-    checkMilestones(vals.d);
+    // The stickies are always visible — they show 0 and wrap back
+    // up (seconds 0→59, minutes 0→59, hours 0→23, days 0→...) so the
+    // stack stays full and tearing continues until the very end.
 
     if (diff <= 0 && !eventReached) {
       eventReached = true;
-      ['d', 'h', 'm', 's'].forEach(function (u) { if (!vanished[u]) vanishUnit(u); });
       fiestaMessage();
     }
-  }
-
-  function vanishUnit(u) {
-    if (vanished[u]) return;
-    vanished[u] = true;
-    var unit = units[u];
-    unit.box.classList.remove('gone');
-    void unit.box.offsetWidth;
-    unit.box.classList.add('gone');
-    setTimeout(function () {
-      unit.box.classList.add('hidden');
-      maybeAllGone();
-    }, 1250);
-  }
-
-  function maybeAllGone() {
-    var left = ['d', 'h', 'm', 's'].filter(function (u) { return !vanished[u]; });
-    if (left.length === 0) fiestaMessage();
   }
 
   function fiestaMessage() {
@@ -120,27 +99,6 @@
       '<span class="marker pink" style="font-size:34px">&#127881; It\'s Fiesta Time! &#127881;</span>' +
       '<span class="hand" style="font-size:25px">The bells are ringing &mdash; see you at 4:30 PM!</span>';
     fireConfetti(320);
-  }
-
-  /* ---- milestone stickies that peel off one by one ---- */
-  var milestones = [
-    { id: 'ms-3', days: 7, label: 'Final countdown — print the invites!' },
-    { id: 'ms-2', days: 14, label: 'Rehearse the dance moves!' },
-    { id: 'ms-1', days: 21, label: 'Gather your best performances' }
-  ];
-  var milDone = {};
-  function checkMilestones(daysLeft) {
-    milestones.forEach(function (mi) {
-      if (milDone[mi.id]) return;
-      if (daysLeft <= mi.days) {
-        milDone[mi.id] = true;
-        var el = document.getElementById(mi.id);
-        if (el) {
-          el.classList.add('gone');
-          setTimeout(function () { el.classList.add('hidden'); }, 1300);
-        }
-      }
-    });
   }
 
   /* =========================================================
@@ -189,7 +147,7 @@
     var box = e.target.closest('.unit-stack');
     if (box) {
       var u = box.getAttribute('data-unit');
-      if (u && !vanished[u]) tearUnit(units[u]);
+      if (u) tearUnit(units[u]);
     }
   });
 

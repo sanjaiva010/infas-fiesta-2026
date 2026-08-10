@@ -655,11 +655,34 @@ body::before{
   .rf-row{grid-template-columns:1fr;}
 }
 @media (max-width:520px){
-  .hero-title-fiesta{font-size:60px;}
-  .hero-title-year{font-size:52px;}
-  .section-title{font-size:40px;}
-  .unit-stack{width:150px;height:150px;}
-  .stack-num{font-size:52px;}
+  .topbar-left{gap:6px;}
+  .topbar-school{font-size:14px;}
+  .hero{padding-top:16px;}
+  .hero-title-fiesta{font-size:58px;}
+  .hero-title-year{font-size:50px;}
+  .hero-kicker{font-size:22px;}
+  .hero-leadup{font-size:24px;}
+  .section-title{font-size:34px;}
+  .unit-stack{width:148px;height:148px;}
+  .stack-num{font-size:50px;}
+  .stack-label{font-size:22px;}
+  .sticky-board{gap:16px;}
+  .mini-sticky{width:200px;padding:13px 12px 12px;}
+  .mini-sticky .ms-label{font-size:18px;}
+  .event-script{font-size:54px;}
+  .guest-card.prominent .guest-name{font-size:34px;}
+  .guest-name{font-size:27px;}
+  .agenda-list .nm{font-size:18px;}
   .footer-grid{grid-template-columns:1fr;}
-  .bunting span{width:36px;height:24px;}
+  .bunting span{width:32px;height:22px;}
+}
+@media (max-width:400px){
+  .hero-title-fiesta{font-size:50px;}
+  .hero-title-year{font-size:44px;}
+  .doodle-zone{width:min(330px,100%);}
+  .speech-bubble{width:250px;}
+  .section-title{font-size:30px;}
+  .event-card{padding:30px 16px;}
+  .verse-text{font-size:32px;}
+  .rf-field input,.rf-field select{font-size:17px;}
 }
