@@ -5,6 +5,6 @@
    protected by Row Level Security (see supabase/schema.sql).
    ============================================================ */
 window.SUPABASE = {
-  url: "https://lrsgzxkqsomghvqxhekh.supabase.co",
-  anonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imxyc2d6eGtxc29tZ2h2cXhoZWtoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU1Njk3NjMsImV4cCI6MjEwMTE0NTc2M30.BRFQGiUIGIWMdAyDoB2W2T10lmHiwEkT4BGjmOiIKDo"
+  url: "https://sksuvuynipeqmrgyfwir.supabase.co",
+  anonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNrc3V2dXluaXBlcW1yZ3lmd2lyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODYzMjgyODEsImV4cCI6MjEwMTkwNDI4MX0.AoIg1b3rcdHdo1RWBa07Tvk3VRw-bwFErXLRZyLxCoI"
 };
