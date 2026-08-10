@@ -1,6 +1,9 @@
 -- ============================================================
 -- Infa's Fiesta 2026 — RSVP table
 -- Run this in Supabase SQL Editor once.
+-- Safe to re-run (idempotent): existing policies are dropped first.
+-- IMPORTANT: run it in the SAME project as the URL + anon key in
+-- js/supabase-config.js (currently: lrsgzxkqsomghvqxhekh).
 -- ============================================================
 
 create table if not exists public.rsvps (
@@ -12,8 +15,10 @@ create table if not exists public.rsvps (
   created_at timestamptz not null default now()
 );
 
--- Allow anyone to add an RSVP, but not read/modify others
 alter table public.rsvps enable row level security;
+
+drop policy if exists "Public can insert rsvps" on public.rsvps;
+drop policy if exists "Public can view rsvps" on public.rsvps;
 
 create policy "Public can insert rsvps"
 on public.rsvps for insert
