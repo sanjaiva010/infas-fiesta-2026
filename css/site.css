@@ -450,23 +450,22 @@ body::before{
 .event-card{
   position:relative;
   margin:34px auto 0;max-width:880px;
-  background:linear-gradient(160deg,var(--purple-deep) 0%,var(--purple) 55%,#8a5ab5 100%);
+  background:#2b2042;
   border-radius:28px;
   padding:44px 30px 40px;
-  color:#f6ecff;
+  color:#f0eafc;
   text-align:center;
-  box-shadow:0 18px 40px rgba(43,32,66,.35);
-  border:3px solid rgba(255,255,255,.14);
+  box-shadow:0 10px 22px rgba(43,32,66,.28);
+  border:1px solid rgba(255,255,255,.12);
 }
-.event-rule-t,.event-rule-b{height:5px;background:repeating-linear-gradient(90deg,var(--gold-light) 0 14px,transparent 14px 22px);margin:0 auto 26px;max-width:220px;border-radius:2px;}
+.event-rule-t,.event-rule-b{height:4px;background:repeating-linear-gradient(90deg,#a8883a 0 14px,rgba(255,255,255,.06) 14px 22px);margin:0 auto 26px;max-width:220px;border-radius:2px;}
 .event-card .event-rule-b{margin:24px auto 0;}
 .event-script{
-  font-size:66px;color:#ffecae;
-  text-shadow:0 3px 12px rgba(0,0,0,.35);
+  font-size:66px;color:#d9b95c;
   line-height:1.05;
 }
 .event-sub{
-  font-size:24px;color:#ffe9a8;letter-spacing:1.5px;margin-top:4px;
+  font-size:24px;color:#c9a227;letter-spacing:1.5px;margin-top:4px;
 }
 .event-grid{
   display:grid;grid-template-columns:1fr 1fr;gap:14px 22px;
@@ -474,18 +473,18 @@ body::before{
 }
 .ev{
   display:flex;align-items:center;gap:12px;
-  background:rgba(255,255,255,.08);
-  border:1.5px solid rgba(255,255,255,.16);
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.14);
   border-radius:14px;padding:12px 16px;
-  color:#fff;font-size:19px;
+  color:#efe8ff;font-size:19px;
 }
-.ev svg{flex:0 0 26px;}
+.ev svg{flex:0 0 26px;stroke:#c9a227;}
 .btn-save-nm{
   display:inline-block;margin-top:26px;
-  background:var(--gold);color:#3a2a05;
+  background:var(--gold);color:#2a1f10;
   font-family:'Caveat',cursive;font-weight:700;font-size:22px;
   padding:9px 28px;border-radius:999px;text-decoration:none;
-  box-shadow:0 6px 14px rgba(242,201,76,.4);
+  box-shadow:0 4px 10px rgba(0,0,0,.25);
   transition:transform .15s;
 }
 .btn-save-nm:hover{transform:translateY(-2px);}
