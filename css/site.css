@@ -523,13 +523,20 @@ body::before{
 .guest-name{font-family:'Caveat',cursive;font-weight:700;font-size:31px;color:var(--purple-deep);margin-top:12px;line-height:1.1;}
 .guest-role{color:#5a5260;margin-top:8px;font-size:17px;}
 
-/* ---------- guests: triangle layout (desktop only) ---------- */
+/* ---------- guests: decorations & equal cards (desktop triangle) ---------- */
 .guests{position:relative;overflow:hidden;}
-.guest-triangle-svg{position:absolute;left:50%;top:6%;transform:translateX(-50%);width:min(980px,96%);height:420px;z-index:0;pointer-events:none;}
+.guest-deco .gdeco{
+  position:absolute;z-index:0;color:var(--navy);
+  animation:floaty 6s ease-in-out infinite;pointer-events:none;
+  filter:drop-shadow(0 3px 3px rgba(32,26,46,.10));
+}
+.gd-star{left:3.5%;top:5%;color:var(--gold);}
+.gd-note{right:4%;top:9%;color:var(--pink-deep);animation-delay:.5s;}
+.gd-plane{left:8%;top:42%;color:var(--pink-deep);transform:rotate(-14deg);animation-delay:.8s;}
+.gd-lamp{right:6%;top:36%;color:var(--gold);animation-delay:1s;}
+.gd-pencil{right:13%;bottom:7%;color:#3b6fd4;transform:rotate(-22deg);animation-delay:.4s;}
+.gd-book{left:11%;bottom:8%;color:var(--purple-deep);animation-delay:1.2s;}
 .guest-grid{position:relative;z-index:1;}
-.tri-dash{stroke-dasharray:1;stroke-dashoffset:1;animation:drawLine 4.2s ease-in-out infinite;}
-.tri-p{animation-delay:.6s;}
-.tri-b{animation-delay:1.2s;}
 @keyframes drawLine{
   0%{stroke-dashoffset:1;}
   8%{stroke-dashoffset:1;}
@@ -541,13 +548,12 @@ body::before{
     grid-template-columns:1fr 1fr 1fr;
     grid-template-rows:auto auto;
     column-gap:44px;
-    row-gap:58px;
+    row-gap:40px;
     align-items:start;
-    max-width:1040px;margin-left:auto;margin-right:auto;
+    max-width:1060px;margin-left:auto;margin-right:auto;
   }
-  .guest-card{width:100%;justify-self:center;max-width:430px;}
-  .guest-card.prominent{grid-column:2;grid-row:1;max-width:460px;padding:32px 30px;transform:translateY(2px);}
-  .guest-card.prominent .guest-name{font-size:46px;}
+  .guest-card{width:100%;justify-self:center;max-width:430px;min-height:250px;display:flex;flex-direction:column;justify-content:center;}
+  .guest-card.prominent{grid-column:2;grid-row:1;}
   .guest-grid .guest-card:nth-child(2){grid-column:1;grid-row:2;}
   .guest-grid .guest-card:nth-child(3){grid-column:3;grid-row:2;}
 }
@@ -688,8 +694,8 @@ body::before{
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
 /* ---------- prominent guest (Head Honcho) ---------- */
-.guest-card.prominent .guest-name{font-size:42px;}
-.guest-card.prominent{border-color:var(--gold);box-shadow:0 10px 24px rgba(32,26,46,.18);}
+.guest-card.prominent .guest-name{font-size:38px;}
+.guest-card.prominent{border-color:var(--gold);box-shadow:0 8px 18px rgba(32,26,46,.16);}
 .guest-card.prominent .guest-label{background:var(--purple-deep);}
 
 /* ---------- responsive ---------- */
@@ -705,6 +711,7 @@ body::before{
   .topbar-tag{display:none;}
   .rf-row{grid-template-columns:1fr;}
   .guest-triangle-svg{display:none;}
+  .guest-deco{display:none;}
   .agenda-deco{display:none;}
   .scribbles{display:none;}
 }
