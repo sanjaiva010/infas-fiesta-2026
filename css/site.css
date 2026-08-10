@@ -698,6 +698,31 @@ body::before{
 .guest-card.prominent{border-color:var(--gold);box-shadow:0 8px 18px rgba(32,26,46,.16);}
 .guest-card.prominent .guest-label{background:var(--purple-deep);}
 
+/* ---------- section decor (floating school doodles) ---------- */
+.countdown,.event,.rsvp,.verse{position:relative;}
+.sec-deco{position:absolute;inset:0;pointer-events:none;z-index:0;}
+.sec-deco .sk{
+  position:absolute;color:var(--navy);
+  animation:floaty 6s ease-in-out infinite;
+  animation-delay:var(--dk,0s);
+  filter:drop-shadow(0 3px 3px rgba(32,26,46,.10));
+}
+.sec-deco .sk svg{display:block;}
+.d-pink{color:var(--pink-deep);}
+.d-blue{color:#3b6fd4;}
+.d-gold{color:#d4a017;}
+.d-purple{color:var(--purple-deep);}
+.d-green{color:#2c6e49;}
+.d-navy{color:var(--navy);}
+.p-tl{top:16px;left:2.5%;}
+.p-tr{top:18px;right:2.5%;}
+.p-bl{bottom:-6px;left:2%;}
+.p-br{bottom:-4px;right:2%;}
+.p-ml{top:45%;left:.5%;}
+.p-mr{top:46%;right:.5%;}
+.p-tl2{top:6px;left:7%;}
+.p-tr2{top:8px;right:7%;}
+
 /* ---------- responsive ---------- */
 @media (max-width:880px){
   .hero-inner{grid-template-columns:1fr;}
@@ -711,6 +736,7 @@ body::before{
   .topbar-tag{display:none;}
   .rf-row{grid-template-columns:1fr;}
   .guest-deco{display:none;}
+  .sec-deco{display:none;}
   .agenda-deco{display:none;}
   .scribbles{display:none;}
 }
