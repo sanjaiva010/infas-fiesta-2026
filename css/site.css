@@ -710,7 +710,6 @@ body::before{
   .footer-grid{grid-template-columns:1fr 1fr;}
   .topbar-tag{display:none;}
   .rf-row{grid-template-columns:1fr;}
-  .guest-triangle-svg{display:none;}
   .guest-deco{display:none;}
   .agenda-deco{display:none;}
   .scribbles{display:none;}
