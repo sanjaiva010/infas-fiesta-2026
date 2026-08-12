@@ -753,6 +753,15 @@ html.js .cover.seen .cover-inner{opacity:1;transform:none;}
   .sec-deco{display:none;}
   .agenda-deco{display:none;}
   .scribbles{display:none;}
+  .pg-deco{
+    display:flex;flex-direction:column;align-items:center;
+    justify-content:space-between;
+    top:74px;bottom:8px;width:24px;
+  }
+  .pg-left{left:6px;}
+  .pg-right{right:6px;}
+  .pg-deco .er{position:static;left:auto;right:auto;top:auto;bottom:auto;opacity:.55;}
+  .pg-deco .er svg{max-width:22px;max-height:22px;}
 }
 @media (max-width:520px){
   .intro-env{height:230px;}
