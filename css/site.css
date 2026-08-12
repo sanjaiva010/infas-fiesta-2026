@@ -18,7 +18,6 @@
   --gold:#d4a017;
   --gold-light:#f2c94c;
   --line-blue:rgba(84,138,212,.16);
-  --line-pink:rgba(233,80,106,.38);
   --line-h:34px;
   font-size:16px;
 }
@@ -44,8 +43,7 @@ body{
       transparent calc(var(--line-h) - 1px),
       var(--line-blue) calc(var(--line-h) - 1px),
       var(--line-blue) var(--line-h)
-    ),
-    linear-gradient(90deg, transparent 44px, var(--line-pink) 44px, var(--line-pink) 47px, transparent 47px);
+    );
 }
 
 .paper-texture{
