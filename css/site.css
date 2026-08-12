@@ -97,7 +97,7 @@ body::before{
 .topbar-tag{opacity:.72;}
 .topbar-right{display:flex;gap:16px;align-items:center;}
 .topbar-right a{color:#f3e9ff;text-decoration:none;line-height:1.4;}
-.topbar-right a:hover,.topbar-link:hover{color:var(--gold-light);}
+.topbar-right a:hover{color:var(--gold-light);}
 .topbar-phone{letter-spacing:.4px;}
 
 /* ---------- header ---------- */
@@ -123,14 +123,6 @@ body::before{
 .brand-crest{width:30px;height:30px;border-radius:50%;background:#fff;object-fit:cover;}
 .brand-name{font-size:22px;font-weight:700;letter-spacing:.3px;text-transform:lowercase;}
 .header-actions{display:flex;align-items:center;gap:6px;}
-.track-order{
-  font-family:'Caveat',cursive;font-weight:700;font-size:17px;
-  color:var(--ink);text-decoration:none;
-  border-bottom:2.5px solid var(--pink);
-  padding:2px 4px;margin-right:6px;
-  transition:color .2s;
-}
-.track-order:hover{color:var(--pink-deep);}
 .icon-btn{
   background:none;border:none;cursor:pointer;
   color:var(--ink);width:38px;height:38px;border-radius:10px;
@@ -436,16 +428,6 @@ body::before{
   margin-top:14px;
 }
 .invite-hand{font-size:25px;color:#4a4234;margin-top:6px;}
-.btn-design{
-  display:inline-block;
-  border:3px solid var(--pink);color:var(--pink-deep);
-  background:#fff;
-  font-family:'Caveat',cursive;font-weight:700;font-size:26px;
-  padding:10px 30px;border-radius:999px;text-decoration:none;
-  transition:background .2s,color .2s,transform .15s;
-  transform:rotate(1deg);white-space:nowrap;cursor:pointer;
-}
-.btn-design:hover{background:var(--pink);color:#fff;transform:rotate(1deg) translateY(-2px);}
 
 /* ---------- event details ---------- */
 .event{padding:26px 0 10px;}
@@ -481,15 +463,6 @@ body::before{
   color:#efe8ff;font-size:19px;
 }
 .ev svg{flex:0 0 26px;stroke:#c9a227;}
-.btn-save-nm{
-  display:inline-block;margin-top:26px;
-  background:var(--gold);color:#2a1f10;
-  font-family:'Caveat',cursive;font-weight:700;font-size:22px;
-  padding:9px 28px;border-radius:999px;text-decoration:none;
-  box-shadow:0 4px 10px rgba(0,0,0,.25);
-  transition:transform .15s;
-}
-.btn-save-nm:hover{transform:translateY(-2px);}
 
 /* ---------- guests ---------- */
 .guests{padding:40px 0 20px;}
@@ -638,43 +611,17 @@ body::before{
     repeating-linear-gradient(to bottom,transparent 0,transparent 25px,rgba(255,255,255,.045) 25px,rgba(255,255,255,.045) 26px);
 }
 .footer-grid{
-  display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px;
+  display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px;
   padding:44px 22px 30px;
 }
 .f-logo{max-width:210px;height:auto;filter:brightness(0) invert(1);opacity:.92;}
 .f-tag{color:#cbb8e3;font-size:16px;margin-top:8px;}
 .f-col h4,.f-h{color:var(--gold-light);font-size:22px;margin-bottom:10px;}
 .f-col .f-line,address.f-line{font-size:16px;line-height:1.55;color:#d9cdec;font-style:normal;}
-.f-link{color:var(--gold-light);text-decoration:none;font-size:16px;}
-.f-link:hover{text-decoration:underline;}
 .f-bottom{
   border-top:1px solid rgba(255,255,255,.12);
   text-align:center;padding:16px 22px;font-size:14px;color:#bba9d4;
 }
-
-/* ---------- RSVP form ---------- */
-.rsvp{padding:36px 0 14px;}
-.rsvp-form{
-  max-width:720px;margin:28px auto 0;
-  background:#fffdf6;
-  border:2.5px solid var(--ink);
-  border-radius:20px;
-  box-shadow:0 10px 26px rgba(32,26,46,.14);
-  padding:28px 26px;
-}
-.rf-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-.rf-field{display:flex;flex-direction:column;gap:4px;min-width:0;}
-.rf-label{font-size:21px;color:var(--purple-deep);}
-.rf-field input,.rf-field select{
-  font-family:'Patrick Hand',cursive;font-size:19px;
-  padding:9px 12px;border-radius:10px;
-  border:2px solid #d8cfc0;
-  background:#fff;color:var(--ink);
-  width:100%;
-}
-.rf-field input:focus,.rf-field select:focus{outline:none;border-color:var(--pink);}
-.rf-submit{margin-top:22px;}
-.rf-note{margin-top:12px;font-size:19px;color:#7c6b3a;text-align:center;min-height:24px;}
 
 /* ---------- confetti ---------- */
 #confetti{
@@ -701,7 +648,7 @@ body::before{
 .guest-card.prominent .guest-label{background:var(--purple-deep);}
 
 /* ---------- section decor (floating school doodles) ---------- */
-.countdown,.event,.rsvp,.verse{position:relative;}
+.countdown,.event,.verse{position:relative;}
 .sec-deco{position:absolute;inset:0;pointer-events:none;z-index:0;}
 .sec-deco .sk{
   position:absolute;color:var(--navy);
@@ -736,7 +683,6 @@ body::before{
   .agenda-list{grid-template-columns:1fr;}
   .footer-grid{grid-template-columns:1fr 1fr;}
   .topbar-tag{display:none;}
-  .rf-row{grid-template-columns:1fr;}
   .guest-deco{display:none;}
   .sec-deco{display:none;}
   .agenda-deco{display:none;}
@@ -772,5 +718,4 @@ body::before{
   .section-title{font-size:30px;}
   .event-card{padding:30px 16px;}
   .verse-text{font-size:32px;}
-  .rf-field input,.rf-field select{font-size:17px;}
 }

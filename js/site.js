@@ -1,6 +1,6 @@
 /* ============================================================
    Infa's Fiesta 2026 — countdown with tearing sticky stacks,
-   RSVP (Supabase-backed), confetti + toasts.
+   confetti + toasts.
    ============================================================ */
 (function () {
   'use strict';
@@ -105,12 +105,6 @@
      BUTTONS — everything should do something
      ========================================================= */
   var $ = function (s) { return document.querySelector(s); };
-  var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
-
-  function goTo(target) {
-    var el = typeof target === 'string' ? document.querySelector(target) : target;
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
 
   function saveTheDate() {
     fireConfetti(90);
@@ -122,11 +116,6 @@
   $('#toastBtn').addEventListener('click', saveTheDate);
   $('#userBtn').addEventListener('click', function () {
     popToast('You\u2019re our guest of honour too \u2764');
-  });
-
-  // RSVP navigation (hero, banner, footer)
-  $$('#rsvpBtn, #rsvpBtn2, [data-goto-rsvp]').forEach(function (b) {
-    b.addEventListener('click', function () { goTo('#rsvp'); });
   });
 
   // Share the invite
@@ -154,72 +143,6 @@
   // Speech bubble → confetti
   var bubble = document.querySelector('.speech-bubble');
   if (bubble) bubble.addEventListener('click', function () { fireConfetti(70); });
-
-  /* =========================================================
-     RSVP — Supabase-backed, falls back to local preview
-     ========================================================= */
-  var supabaseClient = null;
-  if (window.supabase && window.SUPABASE && window.SUPABASE.url && window.SUPABASE.anonKey) {
-    try {
-      supabaseClient = window.supabase.createClient(window.SUPABASE.url, window.SUPABASE.anonKey);
-    } catch (e) { supabaseClient = null; }
-  }
-
-  var form = document.getElementById('rsvpForm');
-  var note = document.getElementById('rfNote');
-
-  function saveLocal(data) {
-    var arr = [];
-    try { arr = JSON.parse(localStorage.getItem('infa_rsvps') || '[]'); } catch (e) { arr = []; }
-    arr.push(data);
-    localStorage.setItem('infa_rsvps', JSON.stringify(arr));
-    if (note) {
-      note.textContent = 'Saved on this device (' + arr.length + ' so far). Connect Supabase in js/supabase-config.js to store them in the cloud.';
-    }
-  }
-
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var name = (form.name.value || '').trim();
-    if (!name) { popToast('Please enter your name \uD83D\uDE42'); return; }
-
-    var data = {
-      name: name,
-      phone: (form.phone.value || '').trim() || null,
-      guests: parseInt(form.guests.value, 10) || 1,
-      message: (form.message.value || '').trim() || null
-    };
-
-    var btn = form.querySelector('.rf-submit');
-    btn.disabled = true;
-    var oldLabel = btn.textContent;
-    btn.textContent = 'Sending\u2026';
-
-    var finish = function (ok, msg) {
-      btn.disabled = false;
-      btn.textContent = oldLabel;
-      if (ok && note) note.textContent = '';
-      popToast(msg);
-      if (ok) { form.reset(); fireConfetti(120); }
-    };
-
-    if (supabaseClient) {
-      supabaseClient
-        .from('rsvps')
-        .insert([data])
-        .then(function (res) {
-          if (res.error) throw res.error;
-          finish(true, 'RSVP received! You\u2019re on the guest list \uD83C\uDF89');
-        })
-        .catch(function () {
-          saveLocal(data);
-          finish(false, 'Could not reach Supabase \u2014 your RSVP was saved locally');
-        });
-    } else {
-      saveLocal(data);
-      finish(true, 'Preview mode \u2014 RSVP saved on this device. Connect Supabase to collect responses.');
-    }
-  });
 
   /* =========================================================
      CONFETTI
