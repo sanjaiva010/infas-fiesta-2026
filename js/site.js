@@ -5,6 +5,8 @@
 (function () {
   'use strict';
 
+  document.documentElement.classList.add('js');
+
   // ---- Event: Thursday, 20 August 2026 @ 4:30 PM (local time) ----
   var TARGET = new Date(2026, 7, 20, 16, 30, 0, 0);
   var EVENT_DATE_LABEL = '20 Aug 2026';
@@ -213,6 +215,57 @@
   // ---- start the clock ----
   tick();
   setInterval(tick, 1000);
+
+  /* =========================================================
+     INTRO — envelope "open the invite" on first load.
+     Opens by itself after a beat; tapping opens it faster.
+     ========================================================= */
+  var intro = document.getElementById('intro');
+  var introDone = false;
+
+  function openIntro(fast) {
+    if (introDone) return;
+    introDone = true;
+    intro.classList.add('open');
+    var coverEl = document.getElementById('cover');
+    window.setTimeout(function () {
+      intro.classList.add('lift');
+      if (coverEl) coverEl.classList.add('seen');
+    }, fast ? 700 : 1500);
+    window.setTimeout(function () {
+      intro.setAttribute('aria-hidden', 'true');
+      intro.style.display = 'none';
+      fireConfetti(160);
+    }, fast ? 1450 : 2500);
+  }
+
+  if (intro) {
+    window.setTimeout(function () { openIntro(false); }, 600);
+    intro.addEventListener('click', function () {
+      if (!introDone) openIntro(true);
+    });
+  } else {
+    var coverEl = document.getElementById('cover');
+    if (coverEl) coverEl.classList.add('seen');
+  }
+
+  /* =========================================================
+     SCROLL-IN POP — each page playfully slides into view.
+     ========================================================= */
+  var revealEls = Array.prototype.slice.call(document.querySelectorAll('.page'));
+
+  function reveal(el) { if (el) el.classList.add('seen'); }
+
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { reveal(en.target); io.unobserve(en.target); }
+      });
+    }, { rootMargin: '0px 0px -12% 0px' });
+    revealEls.forEach(function (el) { if (el.id !== 'cover') io.observe(el); });
+  } else {
+    revealEls.forEach(reveal);
+  }
 
   /* =========================================================
      PAGE DOTS — one dot per "page"; the active page lights up
