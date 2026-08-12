@@ -178,6 +178,13 @@
     if (!animating) { animating = true; requestAnimationFrame(drawConfetti); }
   }
 
+  // Three staggered waves of confetti for the grand opening
+  function fireBigConfetti() {
+    fireConfetti(360);
+    window.setTimeout(function () { fireConfetti(320); }, 400);
+    window.setTimeout(function () { fireConfetti(260); }, 850);
+  }
+
   function drawConfetti() {
     ctx.clearRect(0, 0, cv.width, cv.height);
     pieces.forEach(function (p) {
@@ -235,7 +242,7 @@
     window.setTimeout(function () {
       intro.setAttribute('aria-hidden', 'true');
       intro.style.display = 'none';
-      fireConfetti(160);
+      fireBigConfetti();
     }, fast ? 1450 : 2500);
   }
 
