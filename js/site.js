@@ -118,8 +118,8 @@
     popToast('You\u2019re our guest of honour too \u2764');
   });
 
-  // Share the invite
-  $('#shareBtn').addEventListener('click', function () {
+  // Share the invite (header + closing page)
+  function shareInvite() {
     var data = {
       title: "Infa's Fiesta 2026 \u2014 Annual Day Invitation",
       text: "You're invited to Infa's Fiesta 2026! \u2728 Annual Day of Infant Jesus Matric Hr. Sec. School, Tiruppur \u2014 Thu, 20 Aug 2026 @ 4:30 PM.",
@@ -129,7 +129,10 @@
     else {
       window.open('https://wa.me/?text=' + encodeURIComponent(data.text + ' ' + data.url), '_blank');
     }
-  });
+  }
+  $('#shareBtn').addEventListener('click', shareInvite);
+  var shareBtn2 = document.getElementById('shareBtn2');
+  if (shareBtn2) shareBtn2.addEventListener('click', shareInvite);
 
   // Clicking a countdown stack rips off a sticky (fun on touch)
   board.addEventListener('click', function (e) {
@@ -210,4 +213,31 @@
   // ---- start the clock ----
   tick();
   setInterval(tick, 1000);
+
+  /* =========================================================
+     PAGE DOTS — one dot per "page"; the active page lights up
+     and clicking a dot scrolls to that page.
+     ========================================================= */
+  var pageIds = ['cover', 'invite', 'date', 'venue', 'agenda', 'guests', 'verse'];
+  var pageEls = pageIds.map(function (id) { return document.getElementById(id); }).filter(Boolean);
+  var dots = Array.prototype.slice.call(document.querySelectorAll('.page-dots a'));
+
+  function updateDots() {
+    var probe = window.pageYOffset + window.innerHeight * 0.45;
+    var active = 0;
+    pageEls.forEach(function (p, i) { if (p.offsetTop <= probe) active = i; });
+    dots.forEach(function (d, i) { d.classList.toggle('on', i === active); });
+  }
+
+  dots.forEach(function (d) {
+    d.addEventListener('click', function (e) {
+      e.preventDefault();
+      var t = document.getElementById(d.getAttribute('data-target'));
+      if (t) t.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  window.addEventListener('scroll', updateDots, { passive: true });
+  window.addEventListener('resize', updateDots);
+  updateDots();
 })();
