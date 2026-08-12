@@ -86,7 +86,8 @@ body::before{
   position:relative;z-index:1;
   background:rgba(43,32,66,.94);
   color:#f3e9ff;
-  font-size:12.5px;
+  font-family:'Caveat',cursive;font-weight:600;
+  font-size:16.5px;
 }
 .topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:7px 22px;flex-wrap:wrap;}
 .topbar-left{display:flex;align-items:center;gap:9px;flex-wrap:wrap;}
@@ -144,7 +145,8 @@ body::before{
 .hero-kicker{font-size:26px;color:var(--navy);margin-top:10px;}
 .hero-title{line-height:1;margin-top:2px;}
 .hero-title-fiesta{
-  display:block;font-size:92px;color:var(--purple-deep);
+  display:block;font-family:'Caveat',cursive;font-weight:700;
+  font-size:82px;color:var(--purple-deep);
   text-shadow:0 2px 0 rgba(255,255,255,.9),0 4px 10px rgba(106,58,140,.25);
   transform:rotate(-1deg);
 }
@@ -153,7 +155,7 @@ body::before{
   transform:rotate(1deg);margin-left:8px;
 }
 .hero-sub{
-  font-family:'Kaushan Script',cursive;font-size:27px;color:var(--pink-deep);
+  font-family:'Shadows Into Light',cursive;font-size:25px;color:var(--pink-deep);
   margin-top:10px;
 }
 .hero-tagline{
