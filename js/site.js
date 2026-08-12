@@ -217,8 +217,8 @@
   setInterval(tick, 1000);
 
   /* =========================================================
-     INTRO — envelope "open the invite" on first load.
-     Opens by itself after a beat; tapping opens it faster.
+     INTRO — envelope "open the invite". Stays sealed until you
+     tap it, then the flap swings open and the sheet pops out.
      ========================================================= */
   var intro = document.getElementById('intro');
   var introDone = false;
@@ -240,11 +240,9 @@
   }
 
   if (intro) {
-    window.setTimeout(function () { openIntro(false); }, 600);
     intro.addEventListener('click', function () {
       if (!introDone) openIntro(true);
     });
-  } else {
     var coverEl = document.getElementById('cover');
     if (coverEl) coverEl.classList.add('seen');
   }
