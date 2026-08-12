@@ -141,37 +141,51 @@ body::before{
 /* ---------- per-page side doodles (scattered along the gutters) ---------- */
 .pg-deco{
   position:absolute;top:0;bottom:0;
-  width:56px;
+  width:60px;
   display:none;
   z-index:0;pointer-events:none;
 }
-@media (min-width:1280px){ .pg-deco{display:block;} }
-.pg-left{left:16px;}
-.pg-right{right:16px;}
+@media (min-width:1366px){ .pg-deco{display:block;} }
+.pg-left{left:44px;}
+.pg-right{right:44px;}
 .pg-deco .er{position:absolute;display:block;color:var(--navy);filter:drop-shadow(0 3px 5px rgba(32,26,46,.14));}
 .pg-deco .er svg{display:block;width:auto;height:auto;max-width:42px;max-height:42px;}
 .pg-deco .er:nth-child(2n){color:var(--pink-deep);}
 .pg-deco .er:nth-child(3n){color:#3b6fd4;}
 .pg-deco .er:nth-child(4n){color:var(--gold);}
 .pg-deco .er:nth-child(5n){color:#2c6e49;}
+/* a big menagerie of playful motions — no two neighbours repeat */
 .er-float{animation:floaty 5s ease-in-out infinite;}
-.er-sway{animation:sway 4s ease-in-out infinite;}
+.er-drift{animation:drift 6s ease-in-out infinite;}
+.er-hop{animation:hop 2.3s ease-in-out infinite;}
+.er-shimmy{animation:shimmy 3.2s ease-in-out infinite;}
+.er-swing{animation:swing 4.2s ease-in-out infinite;}
 .er-spin{animation:spinSlow 10s linear infinite;}
 .er-wobble{animation:wobble 3.6s ease-in-out infinite;}
-.er-twinkle{animation:twinkle 2.4s ease-in-out infinite;}
-@keyframes sway{0%,100%{transform:rotate(-7deg) translateY(-4px);}50%{transform:rotate(9deg) translateY(6px);}}
+.er-twinkle{animation:twinkle 2.6s ease-in-out infinite;}
+.er-blink{animation:blink 2.2s ease-in-out infinite;}
+.er-orbit{animation:orbit 7s ease-in-out infinite;}
+.er-sway{animation:sway 4.4s ease-in-out infinite;}
+@keyframes floaty{0%,100%{transform:translateY(0) rotate(0);}50%{transform:translateY(-9px) rotate(2deg);}}
+@keyframes drift{0%,100%{transform:translate(0,0) rotate(-6deg);}50%{transform:translate(7px,-15px) rotate(7deg);}}
+@keyframes hop{0%,100%{transform:translateY(0) scale(1,1);}30%{transform:translateY(-11px) scale(.96,1.05);}60%{transform:translateY(0) scale(1.07,.9);}}
+@keyframes shimmy{0%,100%{transform:translateX(-5px) rotate(-3deg);}50%{transform:translateX(5px) rotate(3deg);}}
+@keyframes swing{0%,100%{transform:rotate(-15deg);}50%{transform:rotate(15deg);}}
 @keyframes spinSlow{from{transform:rotate(0);}to{transform:rotate(360deg);}}
 @keyframes wobble{0%,100%{transform:rotate(-5deg) scale(1);}50%{transform:rotate(6deg) scale(1.07);}}
 @keyframes twinkle{0%,100%{transform:scale(1) rotate(0);opacity:.85;}50%{transform:scale(1.28) rotate(9deg);opacity:1;}}
+@keyframes blink{0%,40%,100%{transform:scale(1);opacity:1;}55%{transform:scale(.7);opacity:.6;}70%{transform:scale(1.14);opacity:1;}}
+@keyframes orbit{0%,100%{transform:translate(-9px,5px) rotate(-8deg);}25%{transform:translate(9px,-3px) rotate(-4deg);}50%{transform:translate(11px,11px) rotate(5deg);}75%{transform:translate(-9px,6px) rotate(9deg);}}
+@keyframes sway{0%,100%{transform:rotate(-8deg) translateY(-4px);}50%{transform:rotate(10deg) translateY(6px);}}
 /* scattered, uneven placement so each slide feels hand-drawn */
-.pg-left .er:nth-child(1){top:14%;left:2px;}
-.pg-left .er:nth-child(2){top:37%;left:26px;}
-.pg-left .er:nth-child(3){top:62%;left:8px;}
-.pg-left .er:nth-child(4){top:84%;left:22px;}
-.pg-right .er:nth-child(1){top:17%;right:0;}
-.pg-right .er:nth-child(2){top:41%;right:24px;}
-.pg-right .er:nth-child(3){top:68%;right:6px;}
-.pg-right .er:nth-child(4){top:86%;right:18px;}
+.pg-left .er:nth-child(1){top:13%;left:2px;}
+.pg-left .er:nth-child(2){top:36%;left:30px;}
+.pg-left .er:nth-child(3){top:61%;left:10px;}
+.pg-left .er:nth-child(4){top:83%;left:26px;}
+.pg-right .er:nth-child(1){top:16%;right:0;}
+.pg-right .er:nth-child(2){top:40%;right:28px;}
+.pg-right .er:nth-child(3){top:67%;right:8px;}
+.pg-right .er:nth-child(4){top:85%;right:22px;}
 .pg-left .er:nth-child(1){animation-delay:.1s;}
 .pg-left .er:nth-child(2){animation-delay:.7s;}
 .pg-left .er:nth-child(3){animation-delay:1.2s;}
@@ -284,14 +298,13 @@ html.js .cover.seen .cover-inner{opacity:1;transform:none;}
 .cover-bubble{margin-top:28px;}
 
 /* cover doodles */
-.cover .bunting{top:10px;left:3%;right:3%;}
+.cover .bunting{top:82px;left:3%;right:3%;}
 .cover .doodle-paperplane{left:5%;top:14%;}
 .cover .doodle-star{right:7%;top:20%;}
 .cover .doodle-mag{right:4%;bottom:22%;}
 .cover .doodle-book{left:3%;bottom:20%;}
 .cover .doodle-lightbulb{left:14%;bottom:10%;}
 .cover .doodle-dancer{right:12%;bottom:12%;}
-.cover .doodle-pi{right:20%;top:8%;}
 
 /* ---------- bunting ---------- */
 .bunting{position:absolute;display:flex;justify-content:space-between;z-index:0;}
@@ -309,7 +322,6 @@ html.js .cover.seen .cover-inner{opacity:1;transform:none;}
   animation:floaty 6s ease-in-out infinite;
 }
 .doodle svg{display:block;}
-.doodle-pi{font-family:'Shadows Into Light',cursive;font-size:20px;color:var(--purple-deep);background:#fff;padding:2px 8px;border-radius:8px;box-shadow:0 3px 8px rgba(32,26,46,.12);transform:rotate(-9deg);animation-delay:.6s;}
 @keyframes floaty{
   0%,100%{transform:translateY(0) rotate(0);}
   50%{transform:translateY(-9px) rotate(2deg);}
